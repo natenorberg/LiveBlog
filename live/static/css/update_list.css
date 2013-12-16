@@ -1,0 +1,19 @@
+div.update {
+    width: 100%;
+    padding: 5px;
+}
+div.even {
+    background: #ddd;
+}
+div.timestamp {
+    float: left;
+    font-weight: bold;
+}
+div.text {
+    float: left;
+    padding-left: 10px;
+}
+div.clear {
+    clear: both;
+    height: 1px;
+}

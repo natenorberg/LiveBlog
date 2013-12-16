@@ -1,0 +1,52 @@
+#welcome {
+    visibility: collapse;
+}
+
+#login {
+    margin-top: 50px;
+    border: 1px solid #444444;
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+    background: -webkit-linear-gradient(#e7e7e7, #b2b2b2);
+}
+
+p.login_header {
+    margin: 0px;
+    background: -webkit-linear-gradient(#4262b2, #223292);
+    padding: 8px;
+    border-bottom: 1px solid #444444;
+    color: #ffffff;
+}
+
+form {
+    margin: 20px 40px 50px;
+}
+
+p {
+    text-align: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td.label {
+    text-align: right;
+    font-size: 15px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.submit_button {
+    float: right;
+    margin-right: 21px;
+    border: 1px solid #888;
+    padding: 5px 10px;
+	font-size: 12px;
+    border-radius: 7px;
+    background: -webkit-linear-gradient(#4262b2, #223292);
+    color: #ffffff;
+}
+

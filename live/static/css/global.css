@@ -1,0 +1,18 @@
+#welcome {
+    visibility: visible;
+    float: right;
+    font-size: 12px;
+    height: 20px;
+    padding: 5px;
+}
+body {
+    margin-left: 30px;
+    margin-right: 30px;
+    font-family: "Lucida Grande", Arial, helvetica, sans-serif;
+    background: #fff;
+}
+
+h1 {
+    background: #ccf;
+    padding: 20px;
+}

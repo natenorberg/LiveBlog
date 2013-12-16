@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Live Blog{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="/static/css/update_list.css">
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" language="javascript">
+function update() {
+    update_holder = $("#update_holder");
+    most_recent = update_holder.find("div:first");
+    $.getJSON("/live/updates-after/" + most_recent.attr('id') + "/",
+        function(data) {
+            cycle_class = most_recent.hasClass("odd") ? "even" : "odd";
+            jQuery.each(data, function() {
+                update_holder.prepend('<div id="' + this.pk + '" class="update "' + cycle_class +
+                        '"><div class="timestamp">' + this.fields.timestamp + '</div><div class="text">' +
+                        this.fields.text + '</div><div class="clear"></div></div>'
+                );
+                cycle_class = (cycle_class == "odd") ? "even" : "odd";
+            });
+        }
+    );
+}
+$(document).ready(function() {
+    setInterval("update()", 30000);
+})
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Django Live Update</h1>
+<p>This site will automatically refresh itself</p>
+{% if user.is_authenticated %}
+<p>Welcome, {{ user.first_name }} {{ user.last_name }}!</p>
+{% endif %}
+<p><a href="/live/add/">Add Update</a></p>
+
+{% if object_list %}
+<div id="update_holder">
+    {% for object in object_list %}
+    <div class="update {% cycle even,odd %}" id="{{ object.id }}">
+        <div class="timestamp">
+            {{ object.timestamp|date:"Y-m-d H:i:s" }}
+        </div>
+        <div class="text">
+            {{ object.text|linebreaksbr }}
+        </div>
+        <div class="clear"></div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No updates yet. Please check back later.</p>
+{% endif %}
+
+{% endblock %}

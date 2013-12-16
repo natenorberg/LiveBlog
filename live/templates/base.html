@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Django Live Blog{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+    {% block styles %}{% endblock %}
+    <script type="text/javascript" language="javascript" src="{% static "js/jquery-2.0.3.js" %}"></script>
+    {% block scripts %}{% endblock %}
+</head>
+<body>
+    <div id="header">
+        {% if user.is_authenticated %}
+        <div id="welcome">Welcome, {{ user.first_name }} {{ user.last_name }}! <a href="/accounts/logout/">Log Out</a></div>
+        {% else %}
+        <div id="welcome"><a href="/accounts/login/?next=/live/">Log In</a></div>
+        {% endif %}
+    </div>
+{% block content %}{% endblock %}
+</body>
+</html>
